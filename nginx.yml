@@ -1,0 +1,16 @@
+---
+  - name: installs, starts and enable Nginx on host1
+    hosts: 10.116.0.3
+    tasks:
+      - name: install epel-release
+        yum:
+          name: epel-release
+      - name: install nginx
+        yum:
+          name: nginx
+          state: latest
+      - name: starts and enables nginx
+        systemd:
+          name: nginx
+          state: started
+          enabled: yes
