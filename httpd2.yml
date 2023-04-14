@@ -1,0 +1,16 @@
+---
+  - name: install and runs apache if OS is CentOS.
+    hosts: 10.116.0.3
+    gather_facts: yes
+    tasks:
+      - name: Install apache
+        yum: 
+          name: httpd
+          state: latest
+        when: ansible_disribution == "CentOS"
+      - name: start and enable apache
+        systemd:
+          name: httpd
+          state: started
+          enabled: yes
+        when: ansible_service_mgr == "systemd"

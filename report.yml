@@ -1,0 +1,19 @@
+---
+  - name: report hostname, disk usage and memory usage of host1
+    hosts: 10.116.0.3
+    tasks:
+      - name: hostname report
+        command: hostnamectl
+        register: myoutput1
+      - name: disk usage report
+        command: df -h
+        register: myoutput2
+      - name: memory report
+        command: free -m
+        register: myoutput3
+      - name: Print Message
+        debug: 
+          msg:
+          - "{{myoutput1}}"
+          - "{{myoutput2}}"
+          - "{{myoutput3}}"
