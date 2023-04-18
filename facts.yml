@@ -1,0 +1,8 @@
+---
+  - name: check and print the operating system of host1
+    hosts: 10.116.0.3
+    gather_facts: yes
+    tasks:
+      - name: Print Facts
+        debug: 
+          var: ansible_distribution

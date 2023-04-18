@@ -1,0 +1,19 @@
+---
+  - name: creates and writes on index.html file
+    hosts: 10.116.0.3
+    tasks:
+      - name: create index.html 
+        file: 
+          path: /usr/share/nginx/html/index.html
+          state: touch
+      - name:
+        blockinfile:
+          path: /usr/share/nginx/html/index.html
+          block:
+            <!DOCTYPE html>
+            <html>
+            <body>
+            <h1>My Awesome Web Page!</h1>
+            <p>It worked.</p>
+            </body>
+            </html>
